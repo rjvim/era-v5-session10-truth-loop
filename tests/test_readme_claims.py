@@ -348,6 +348,53 @@ def test_readme_test_count_is_accurate(readme):
     claim(readme, f"{total} test functions")
 
 
+def test_readme_has_no_accidental_block_markers(readme):
+    """A wrapped line starting with '+', '-', '>' or '#' is not prose to Markdown.
+
+    GitHub rendered "+ 4 + 4 (Adam m, v) = 16 bytes" as a bullet, because the
+    line wrap happened to put a plus at column zero. Only visible in the
+    rendered page, never in the source.
+    """
+    in_fence = False
+    for i, line in enumerate(readme.splitlines(), 1):
+        if line.lstrip().startswith("```"):
+            in_fence = not in_fence
+            continue
+        if in_fence or not line:
+            continue
+        # A marker only starts a block when followed by a space ("+0.0000" is
+        # prose; "+ 4" is a bullet), except ">" which always quotes.
+        starts_block = line[:2] in ("+ ", "- ", "* ", "# ") or line.startswith(">")
+        if starts_block:
+            prev = readme.splitlines()[i - 2] if i >= 2 else ""
+            assert prev.strip() == "" or prev[:2] in ("+ ", "- ", "* ", "# ") \
+                or prev.startswith((">", "|", " ")), (
+                f"line {i} starts a Markdown block mid-paragraph: {line[:60]!r}"
+            )
+
+
+def test_readme_limitations_do_not_restate_live_generated_numbers(readme):
+    """Hand-copied *current* figures go stale the moment Task 5 is re-run.
+
+    Historical numbers in the bug narratives (the layer that once reported
+    105.4% of peak) are fixed facts and are fine. What must not appear is a
+    value that regenerates, because nothing would update it here.
+    """
+    lim = readme[readme.index("## Limitations"):readme.index("## Sources")]
+    h = art("t5_mfu.json")["headline"]
+    live = {
+        "measured MFU": f"{h['measured_mfu_6N'] * 100:.1f}%",
+        "trial mean": f"{h['mfu_6N_mean_over_trials'] * 100:.1f}%",
+        "spread": f"{h['mfu_6N_spread_pp']:.1f} pp",
+        "std": f"{h['mfu_6N_std_over_trials'] * 100:.1f} pp",
+    }
+    for label, text in live.items():
+        assert text not in lim, (
+            f"Limitations restates the live {label} ({text}); it regenerates, so "
+            f"reference the Task 5 section instead of copying the figure"
+        )
+
+
 def test_readme_has_a_limitations_section(readme):
     assert "## Limitations" in readme
     assert "Not settled by this work" in readme

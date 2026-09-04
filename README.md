@@ -13,7 +13,7 @@ numbers in the first draft of this one.
 ```bash
 pip install -r requirements.txt
 python src/run_all.py      # regenerates every artifact and figure
-python -m pytest tests/ -q # 131 passed
+python -m pytest tests/ -q # 133 passed
 ```
 
 Walkthrough with live output: **[`session10.ipynb`](session10.ipynb)**
@@ -82,10 +82,10 @@ Three things the ledger makes explicit rather than leaving implicit:
 - Gradient shape equals parameter shape for all 52 tensors.
 - Adam holds exactly two state tensors per parameter tensor, each the parameter's shape.
 
-**What a step costs, per parameter:** 2 (bf16 weight) + 2 (bf16 grad) + 4 (fp32 master)
-+ 4 + 4 (Adam `m`, `v`) = **16 bytes**. For this model, 12.36 MiB. At 120B on the same
-recipe, **1.75 TiB** per checkpoint — which is the resumable training state, not the
-model you ship.
+**What a step costs, per parameter:** 2 (bf16 weight) + 2 (bf16 grad) + 4 (fp32 master
+copy) + 4 + 4 (Adam `m` and `v`) = **16 bytes**. For this model, 12.36 MiB. At 120B on
+the same recipe, **1.75 TiB** per checkpoint — which is the resumable training state, not
+the model you ship.
 
 ---
 
@@ -576,14 +576,15 @@ gradient verification, the accumulation bug and its control, the grad-norm lead,
 bit pattern.
 
 **Hardware-dependent, and the only part that is not reproducible to the digit: Task 5.**
-~28% of a single-thread CPU's matmul rate is not the same statement as ~28% of an H100,
-and the sweep's crossing of 40% between 3.2M and 10.7M parameters would sit somewhere else
-on a device with tensor cores and real memory bandwidth. Beyond that, the numbers move
-between identical runs: a fresh-copy rerun of this repo shifted MFU by up to 2.5 points,
-which is why the run-to-run spread (±2.9 pp over four trials) is now measured, quoted with
-the number, and used as the tolerance in `test_readme_claims.py` rather than matched as a
-string. `src/t5_mfu.py` is device-agnostic and regenerates every figure in that section on
-a GPU.
+A given percentage of a single-thread CPU's matmul rate is not the same statement as the
+same percentage of an H100, and where the sweep crosses 40% would sit elsewhere on a
+device with tensor cores and real memory bandwidth. The numbers also move between
+identical runs — a fresh-copy rerun of this repo shifted MFU by a couple of points — which
+is why the run-to-run spread is measured, quoted beside the number in the section itself,
+and used as the tolerance in `test_readme_claims.py` rather than matched as a string. No
+figures are restated here on purpose: every number in that section is generated from its
+artifact, and copying them into this paragraph by hand is exactly how a README goes stale.
+`src/t5_mfu.py` is device-agnostic and regenerates the whole section on a GPU.
 
 **What the bf16 arm does and does not show.** 400 steps of an 810k-parameter model is
 enough to separate "fp32 master copy" from "no master copy" by 94×, which is the point.
@@ -700,8 +701,9 @@ artifacts/*.json       machine-generated, every one stamped with torch version,
 figures/*.png
 tests/
   test_invariants.py     one test per experimental claim
-  test_readme_claims.py  asserts every number typed below appears in its artifact
+  test_readme_claims.py  asserts every number in this README matches its artifact
   test_gpu_path.py       exercises the CUDA branches from a machine with no GPU
-                       122 test functions, 131 cases
 session10.ipynb        executed walkthrough
 ```
+
+124 test functions, 133 cases.
