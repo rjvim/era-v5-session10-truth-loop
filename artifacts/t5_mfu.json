@@ -1,0 +1,407 @@
+{
+  "environment": {
+    "device": "cpu",
+    "device_name": "x86_64",
+    "dtype": "torch.float32",
+    "torch_threads": 1,
+    "note": "this repo's headline numbers were produced on CPU; the script is device-agnostic and regenerates every figure on a GPU",
+    "timing_caveat": "every number in this artifact is a wall-clock measurement and is the only part of the repo that is not reproducible to the digit; see 'repeatability'"
+  },
+  "peak": {
+    "gemm_sweep": [
+      {
+        "shape": [
+          256,
+          256,
+          256
+        ],
+        "label": "square 256",
+        "flops_per_s": 107847642177.86806
+      },
+      {
+        "shape": [
+          512,
+          512,
+          512
+        ],
+        "label": "square 512",
+        "flops_per_s": 125703067321.0322
+      },
+      {
+        "shape": [
+          1024,
+          1024,
+          1024
+        ],
+        "label": "square 1024",
+        "flops_per_s": 140625265487.46228
+      },
+      {
+        "shape": [
+          2048,
+          2048,
+          2048
+        ],
+        "label": "square 2048",
+        "flops_per_s": 148006206214.54758
+      },
+      {
+        "shape": [
+          1024,
+          128,
+          384
+        ],
+        "label": "attn.c_attn",
+        "flops_per_s": 88999793024.36436
+      },
+      {
+        "shape": [
+          1024,
+          128,
+          128
+        ],
+        "label": "attn.c_proj",
+        "flops_per_s": 90508960013.27792
+      },
+      {
+        "shape": [
+          1024,
+          128,
+          512
+        ],
+        "label": "mlp.c_fc",
+        "flops_per_s": 90506463782.79984
+      },
+      {
+        "shape": [
+          1024,
+          512,
+          128
+        ],
+        "label": "mlp.c_proj",
+        "flops_per_s": 125550229781.74257
+      },
+      {
+        "shape": [
+          1024,
+          128,
+          65
+        ],
+        "label": "lm_head",
+        "flops_per_s": 67730736361.29277
+      }
+    ],
+    "square_gemm_sweep": [
+      {
+        "shape": [
+          256,
+          256,
+          256
+        ],
+        "label": "square 256",
+        "flops_per_s": 107847642177.86806
+      },
+      {
+        "shape": [
+          512,
+          512,
+          512
+        ],
+        "label": "square 512",
+        "flops_per_s": 125703067321.0322
+      },
+      {
+        "shape": [
+          1024,
+          1024,
+          1024
+        ],
+        "label": "square 1024",
+        "flops_per_s": 140625265487.46228
+      },
+      {
+        "shape": [
+          2048,
+          2048,
+          2048
+        ],
+        "label": "square 2048",
+        "flops_per_s": 148006206214.54758
+      }
+    ],
+    "peak_flops_per_s": 148006206214.54758,
+    "peak_at_shape": [
+      2048,
+      2048,
+      2048
+    ],
+    "peak_at_label": "square 2048",
+    "peak_at_size": 2048,
+    "method": "maximum sustained rate over large square matmuls AND the model's own GEMM shapes, in the training dtype; the model's shapes are included because a cache-resident non-square GEMM can beat the biggest square one, which would leave the denominator below an observed rate"
+  },
+  "theoretical_peak": null,
+  "baseline": {
+    "iters_timed": 12,
+    "timing_repeats": 3,
+    "seconds_per_step": 0.10859037508333813,
+    "tokens_per_step": 1024,
+    "tokens_per_second": 9429.933354720682,
+    "phase_seconds_per_step": {
+      "data": 4.736499995772192e-06,
+      "forward": 0.04245911091666935,
+      "backward": 0.05873112516667097,
+      "optimizer": 0.007395402500002035
+    },
+    "phase_fraction": {
+      "data": 4.361804618629548e-05,
+      "forward": 0.39100252562977095,
+      "backward": 0.5408501915717441,
+      "optimizer": 0.06810366475229875
+    },
+    "n_params": 809856,
+    "n_params_non_embedding": 801664,
+    "flops_per_token": {
+      "six_n_all_params": 4859136,
+      "six_n_non_embedding": 4809984,
+      "attention_term_12_L_T_C": 393216,
+      "six_n_plus_attention": 5252352,
+      "attention_share_of_total": 0.07486474630793975
+    },
+    "achieved_flops_per_s_6N": 45821328641.52404,
+    "achieved_flops_per_s_6N_plus_attention": 49529329315.53389,
+    "peak_flops_per_s": 148006206214.54758,
+    "mfu_6N": 0.30959058956691404,
+    "mfu_6N_plus_attention": 0.3346435976052039,
+    "B": 16,
+    "T": 64
+  },
+  "repeatability": {
+    "trials": 4,
+    "mfu_6N_values": [
+      0.2948316388134018,
+      0.2920265812135363,
+      0.3026909977960887,
+      0.29595308716454266
+    ],
+    "mean": 0.29637557624689237,
+    "std": 0.004522556318700277,
+    "min": 0.2920265812135363,
+    "max": 0.3026909977960887,
+    "coefficient_of_variation": 0.015259544581814027,
+    "spread_pp": 1.0664416582552405
+  },
+  "shape_efficiency": {
+    "per_layer": [
+      {
+        "layer": "attn.c_attn",
+        "M": 1024,
+        "K": 128,
+        "N": 384,
+        "flops_per_s": 88999793024.36436,
+        "fraction_of_peak": 0.6013247369867153,
+        "flops_per_call": 100663296
+      },
+      {
+        "layer": "attn.c_proj",
+        "M": 1024,
+        "K": 128,
+        "N": 128,
+        "flops_per_s": 90508960013.27792,
+        "fraction_of_peak": 0.6115213836511524,
+        "flops_per_call": 33554432
+      },
+      {
+        "layer": "mlp.c_fc",
+        "M": 1024,
+        "K": 128,
+        "N": 512,
+        "flops_per_s": 90506463782.79984,
+        "fraction_of_peak": 0.611504517936248,
+        "flops_per_call": 134217728
+      },
+      {
+        "layer": "mlp.c_proj",
+        "M": 1024,
+        "K": 512,
+        "N": 128,
+        "flops_per_s": 125550229781.74257,
+        "fraction_of_peak": 0.8482767918511933,
+        "flops_per_call": 134217728
+      },
+      {
+        "layer": "lm_head",
+        "M": 1024,
+        "K": 128,
+        "N": 65,
+        "flops_per_s": 67730736361.29277,
+        "fraction_of_peak": 0.4576209207275492,
+        "flops_per_call": 17039360
+      }
+    ],
+    "flop_weighted_fraction_of_peak": 0.6586312300671453,
+    "max_fraction_of_peak": 0.8482767918511933,
+    "note": "forward-pass linear layers only, rates taken from the same benchmark sweep that defined the peak, so no layer can exceed it"
+  },
+  "size_sweep": [
+    {
+      "n_embd": 128,
+      "n_layer": 4,
+      "batch_rows": 8,
+      "n_params": 809856,
+      "tokens_per_second": 6866.194938958016,
+      "mfu_6N": 0.22542145943897157,
+      "mfu_6N_plus_attention": 0.2436632465786513,
+      "optimizer_fraction": 0.12153004618404276
+    },
+    {
+      "n_embd": 128,
+      "n_layer": 4,
+      "batch_rows": 32,
+      "n_params": 809856,
+      "tokens_per_second": 9101.768099616043,
+      "mfu_6N": 0.29881671970150697,
+      "mfu_6N_plus_attention": 0.3229978735638701,
+      "optimizer_fraction": 0.03860464719737786
+    },
+    {
+      "n_embd": 256,
+      "n_layer": 4,
+      "batch_rows": 8,
+      "n_params": 3192576,
+      "tokens_per_second": 3156.145807697763,
+      "mfu_6N": 0.40847889892739225,
+      "mfu_6N_plus_attention": 0.42524910149742073,
+      "optimizer_fraction": 0.14406193095950132
+    },
+    {
+      "n_embd": 256,
+      "n_layer": 4,
+      "batch_rows": 32,
+      "n_params": 3192576,
+      "tokens_per_second": 3803.62269603711,
+      "mfu_6N": 0.49227751361266087,
+      "mfu_6N_plus_attention": 0.5124880891053786,
+      "optimizer_fraction": 0.04468422977081002
+    },
+    {
+      "n_embd": 384,
+      "n_layer": 6,
+      "batch_rows": 8,
+      "n_params": 10697088,
+      "tokens_per_second": 1073.7259810276933,
+      "mfu_6N": 0.4656186358951735,
+      "mfu_6N_plus_attention": 0.4784554493484345,
+      "optimizer_fraction": 0.1633723876273151
+    },
+    {
+      "n_embd": 384,
+      "n_layer": 6,
+      "batch_rows": 32,
+      "n_params": 10697088,
+      "tokens_per_second": 1336.6743831525619,
+      "mfu_6N": 0.5796455649921226,
+      "mfu_6N_plus_attention": 0.5956260292888506,
+      "optimizer_fraction": 0.05106039972969874
+    },
+    {
+      "n_embd": 512,
+      "n_layer": 6,
+      "batch_rows": 8,
+      "n_params": 18981376,
+      "tokens_per_second": 681.0637020837422,
+      "mfu_6N": 0.5240669242125136,
+      "mfu_6N_plus_attention": 0.5349234342817071,
+      "optimizer_fraction": 0.17398327446388548
+    },
+    {
+      "n_embd": 512,
+      "n_layer": 6,
+      "batch_rows": 32,
+      "n_params": 18981376,
+      "tokens_per_second": 842.6914145916729,
+      "mfu_6N": 0.6484366974104996,
+      "mfu_6N_plus_attention": 0.6618696373832901,
+      "optimizer_fraction": 0.05406543898176695
+    }
+  ],
+  "best_configuration": {
+    "n_embd": 512,
+    "n_layer": 6,
+    "batch_rows": 32,
+    "n_params": 18981376,
+    "tokens_per_second": 842.6914145916729,
+    "mfu_6N": 0.6484366974104996,
+    "mfu_6N_plus_attention": 0.6618696373832901,
+    "optimizer_fraction": 0.05406543898176695
+  },
+  "attribution": {
+    "measured_mfu_6N": 0.30959058956691404,
+    "target": 0.4,
+    "distance_to_target_pp": 9.040941043308598,
+    "budget": {
+      "1_small_gemm_shapes": {
+        "explanation": "the model's real matmul shapes reach only this fraction of the machine's large-GEMM rate",
+        "fraction_of_peak_reachable": 0.6586312300671453,
+        "mfu_lost_pp": 34.13687699328547
+      },
+      "2_time_not_spent_in_matmuls": {
+        "explanation": "optimizer step and batch preparation, measured",
+        "fraction_of_step": 0.06814728279848505,
+        "mfu_lost_pp": 4.488392869529978
+      },
+      "3_residual": {
+        "explanation": "elementwise work counted in neither the 6N FLOP model nor the GEMM benchmark: LayerNorm, GELU, softmax, the causal mask, residual adds, plus kernel launch and memory traffic",
+        "mfu_lost_pp": 30.41567118049315
+      }
+    },
+    "bookkeeping_identity_holds": true,
+    "caveat": "the residual is DEFINED as what is left after the first two terms, so 'bookkeeping_identity_holds' is an arithmetic check on this script, not evidence that the decomposition is right. The first two terms are independently measured (a GEMM benchmark at the model's real shapes, and phase timing); the third is a remainder and is only as trustworthy as the claim that those two are exhaustive.",
+    "independently_measured_terms": [
+      "1_small_gemm_shapes",
+      "2_time_not_spent_in_matmuls"
+    ],
+    "remainder_term": "3_residual"
+  },
+  "instructor_v4_reference": {
+    "params": 9000000000.0,
+    "tokens_per_second": 12000,
+    "cluster_peak_flops_per_s": 7912000000000000.0,
+    "achieved_flops_per_s": 648000000000000.0,
+    "achieved_tflops_per_s": 648.0,
+    "mfu": 0.08190091001011122,
+    "session_quoted_mfu": 0.082,
+    "reproduces_quoted_value": true
+  },
+  "headline": {
+    "measured_mfu_6N": 0.30959058956691404,
+    "mfu_6N_mean_over_trials": 0.29637557624689237,
+    "mfu_6N_std_over_trials": 0.004522556318700277,
+    "mfu_6N_spread_pp": 1.0664416582552405,
+    "measured_mfu_6N_plus_attention": 0.3346435976052039,
+    "tokens_per_second": 9429.933354720682,
+    "sustained_peak_gflops": 148.00620621454757,
+    "best_sweep_mfu_6N": 0.6484366974104996,
+    "best_sweep_config": {
+      "n_embd": 512,
+      "n_layer": 6,
+      "batch_rows": 32,
+      "n_params": 18981376
+    },
+    "mfu_improves_with_size": true,
+    "flop_weighted_shape_efficiency": 0.6586312300671453,
+    "optimizer_fraction_of_step": 0.06810366475229875,
+    "distance_to_40pct_pp": 9.040941043308598
+  },
+  "_env": {
+    "python": "3.12.3",
+    "torch": "2.13.0+cu130",
+    "platform": "Linux-6.18.44-fc-v22-x86_64-with-glibc2.39",
+    "processor": "x86_64",
+    "cuda_available": false,
+    "device_name": "cpu",
+    "torch_threads": 1,
+    "git_commit": null,
+    "corpus_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+    "generated_utc": "2026-09-01T13:59:49Z"
+  }
+}

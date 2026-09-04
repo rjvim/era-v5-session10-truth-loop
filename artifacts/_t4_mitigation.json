@@ -1,0 +1,56 @@
+{
+  "mitigation_sweep": [
+    {
+      "clip": null,
+      "fraction_of_steps_clipped": null,
+      "grad_norm_at_injection_preclip": 4.074752403334057,
+      "grad_norm_at_injection_postclip": 4.074752403334057,
+      "peak_excess_loss_vs_clean": 0.2895505428314209,
+      "steps_from_injection_to_peak": 5
+    },
+    {
+      "clip": 2.0,
+      "fraction_of_steps_clipped": 0.10714285714285714,
+      "grad_norm_at_injection_preclip": 4.069481912099794,
+      "grad_norm_at_injection_postclip": 1.9999998115133701,
+      "peak_excess_loss_vs_clean": 0.24274957180023193,
+      "steps_from_injection_to_peak": 5
+    },
+    {
+      "clip": 1.0,
+      "fraction_of_steps_clipped": 1.0,
+      "grad_norm_at_injection_preclip": 4.013892802505753,
+      "grad_norm_at_injection_postclip": 0.9999999372281961,
+      "peak_excess_loss_vs_clean": 0.1964566707611084,
+      "steps_from_injection_to_peak": 5
+    },
+    {
+      "clip": 0.5,
+      "fraction_of_steps_clipped": 1.0,
+      "grad_norm_at_injection_preclip": 4.0137967442177205,
+      "grad_norm_at_injection_postclip": 0.49999993533033016,
+      "peak_excess_loss_vs_clean": 0.1964418888092041,
+      "steps_from_injection_to_peak": 5
+    },
+    {
+      "clip": 0.25,
+      "fraction_of_steps_clipped": 1.0,
+      "grad_norm_at_injection_preclip": 4.013603233476773,
+      "grad_norm_at_injection_postclip": 0.24999996614454528,
+      "peak_excess_loss_vs_clean": 0.1964125633239746,
+      "steps_from_injection_to_peak": 5
+    }
+  ],
+  "_env": {
+    "python": "3.12.3",
+    "torch": "2.13.0+cu130",
+    "platform": "Linux-6.18.44-fc-v22-x86_64-with-glibc2.39",
+    "processor": "x86_64",
+    "cuda_available": false,
+    "device_name": "cpu",
+    "torch_threads": 1,
+    "git_commit": null,
+    "corpus_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+    "generated_utc": "2026-09-01T11:06:25Z"
+  }
+}

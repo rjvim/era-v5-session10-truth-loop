@@ -1,0 +1,8 @@
+torch>=2.0
+numpy>=1.24
+matplotlib>=3.7
+pytest>=7.0
+# only needed to rebuild session10.ipynb from src/build_notebook.py
+nbformat>=5.9
+nbclient>=0.8
+ipykernel>=6.0

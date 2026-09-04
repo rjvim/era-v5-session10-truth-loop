@@ -1,0 +1,2645 @@
+{
+  "config": {
+    "B": 8,
+    "T": 64,
+    "vocab_size": 65,
+    "n_layer": 4,
+    "n_head": 4,
+    "n_embd": 128,
+    "head_dim": 32,
+    "block_size": 64,
+    "tie_weights": true
+  },
+  "totals": {
+    "n_params": 809856,
+    "n_param_tensors": 52,
+    "n_grad_tensors": 52,
+    "n_optimizer_state_tensors": 104,
+    "n_traced_activations": 22,
+    "all_blocks_have_identical_activation_shapes": true,
+    "n_blocks_traced": 4,
+    "lm_head_shares_storage_with_wte": true,
+    "all_grads_match_param_shape": true,
+    "all_optimizer_state_matches_param_shape": true,
+    "distinct_axis_sizes": [
+      4,
+      8,
+      32,
+      64,
+      65,
+      128,
+      384,
+      512
+    ]
+  },
+  "memory_per_param_bytes": {
+    "note": "mixed-precision recipe from the session: bf16 weight + bf16 grad + fp32 master copy + fp32 Adam m and v = 16 bytes/param",
+    "bf16_weight": 2,
+    "bf16_grad": 2,
+    "fp32_master_weight": 4,
+    "adam_exp_avg_fp32": 4,
+    "adam_exp_avg_sq_fp32": 4,
+    "total": 16,
+    "this_model_state_bytes": 12957696,
+    "this_model_state_MiB": 12.357,
+    "extrapolated_checkpoint_TiB_at_120B": 1.746
+  },
+  "parameters_by_layer": {
+    "top-level": {
+      "n_params": 16768,
+      "n_tensors": 4,
+      "tensors": [
+        {
+          "name": "wte.weight",
+          "shape": [
+            65,
+            128
+          ],
+          "numel": 8320,
+          "trainable": true
+        },
+        {
+          "name": "wpe.weight",
+          "shape": [
+            64,
+            128
+          ],
+          "numel": 8192,
+          "trainable": true
+        },
+        {
+          "name": "ln_f.weight",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        },
+        {
+          "name": "ln_f.bias",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        }
+      ]
+    },
+    "block 0": {
+      "n_params": 198272,
+      "n_tensors": 12,
+      "tensors": [
+        {
+          "name": "blocks.0.ln_1.weight",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        },
+        {
+          "name": "blocks.0.ln_1.bias",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        },
+        {
+          "name": "blocks.0.attn.c_attn.weight",
+          "shape": [
+            384,
+            128
+          ],
+          "numel": 49152,
+          "trainable": true
+        },
+        {
+          "name": "blocks.0.attn.c_attn.bias",
+          "shape": [
+            384
+          ],
+          "numel": 384,
+          "trainable": true
+        },
+        {
+          "name": "blocks.0.attn.c_proj.weight",
+          "shape": [
+            128,
+            128
+          ],
+          "numel": 16384,
+          "trainable": true
+        },
+        {
+          "name": "blocks.0.attn.c_proj.bias",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        },
+        {
+          "name": "blocks.0.ln_2.weight",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        },
+        {
+          "name": "blocks.0.ln_2.bias",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        },
+        {
+          "name": "blocks.0.mlp.c_fc.weight",
+          "shape": [
+            512,
+            128
+          ],
+          "numel": 65536,
+          "trainable": true
+        },
+        {
+          "name": "blocks.0.mlp.c_fc.bias",
+          "shape": [
+            512
+          ],
+          "numel": 512,
+          "trainable": true
+        },
+        {
+          "name": "blocks.0.mlp.c_proj.weight",
+          "shape": [
+            128,
+            512
+          ],
+          "numel": 65536,
+          "trainable": true
+        },
+        {
+          "name": "blocks.0.mlp.c_proj.bias",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        }
+      ]
+    },
+    "block 1": {
+      "n_params": 198272,
+      "n_tensors": 12,
+      "tensors": [
+        {
+          "name": "blocks.1.ln_1.weight",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        },
+        {
+          "name": "blocks.1.ln_1.bias",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        },
+        {
+          "name": "blocks.1.attn.c_attn.weight",
+          "shape": [
+            384,
+            128
+          ],
+          "numel": 49152,
+          "trainable": true
+        },
+        {
+          "name": "blocks.1.attn.c_attn.bias",
+          "shape": [
+            384
+          ],
+          "numel": 384,
+          "trainable": true
+        },
+        {
+          "name": "blocks.1.attn.c_proj.weight",
+          "shape": [
+            128,
+            128
+          ],
+          "numel": 16384,
+          "trainable": true
+        },
+        {
+          "name": "blocks.1.attn.c_proj.bias",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        },
+        {
+          "name": "blocks.1.ln_2.weight",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        },
+        {
+          "name": "blocks.1.ln_2.bias",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        },
+        {
+          "name": "blocks.1.mlp.c_fc.weight",
+          "shape": [
+            512,
+            128
+          ],
+          "numel": 65536,
+          "trainable": true
+        },
+        {
+          "name": "blocks.1.mlp.c_fc.bias",
+          "shape": [
+            512
+          ],
+          "numel": 512,
+          "trainable": true
+        },
+        {
+          "name": "blocks.1.mlp.c_proj.weight",
+          "shape": [
+            128,
+            512
+          ],
+          "numel": 65536,
+          "trainable": true
+        },
+        {
+          "name": "blocks.1.mlp.c_proj.bias",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        }
+      ]
+    },
+    "block 2": {
+      "n_params": 198272,
+      "n_tensors": 12,
+      "tensors": [
+        {
+          "name": "blocks.2.ln_1.weight",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        },
+        {
+          "name": "blocks.2.ln_1.bias",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        },
+        {
+          "name": "blocks.2.attn.c_attn.weight",
+          "shape": [
+            384,
+            128
+          ],
+          "numel": 49152,
+          "trainable": true
+        },
+        {
+          "name": "blocks.2.attn.c_attn.bias",
+          "shape": [
+            384
+          ],
+          "numel": 384,
+          "trainable": true
+        },
+        {
+          "name": "blocks.2.attn.c_proj.weight",
+          "shape": [
+            128,
+            128
+          ],
+          "numel": 16384,
+          "trainable": true
+        },
+        {
+          "name": "blocks.2.attn.c_proj.bias",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        },
+        {
+          "name": "blocks.2.ln_2.weight",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        },
+        {
+          "name": "blocks.2.ln_2.bias",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        },
+        {
+          "name": "blocks.2.mlp.c_fc.weight",
+          "shape": [
+            512,
+            128
+          ],
+          "numel": 65536,
+          "trainable": true
+        },
+        {
+          "name": "blocks.2.mlp.c_fc.bias",
+          "shape": [
+            512
+          ],
+          "numel": 512,
+          "trainable": true
+        },
+        {
+          "name": "blocks.2.mlp.c_proj.weight",
+          "shape": [
+            128,
+            512
+          ],
+          "numel": 65536,
+          "trainable": true
+        },
+        {
+          "name": "blocks.2.mlp.c_proj.bias",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        }
+      ]
+    },
+    "block 3": {
+      "n_params": 198272,
+      "n_tensors": 12,
+      "tensors": [
+        {
+          "name": "blocks.3.ln_1.weight",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        },
+        {
+          "name": "blocks.3.ln_1.bias",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        },
+        {
+          "name": "blocks.3.attn.c_attn.weight",
+          "shape": [
+            384,
+            128
+          ],
+          "numel": 49152,
+          "trainable": true
+        },
+        {
+          "name": "blocks.3.attn.c_attn.bias",
+          "shape": [
+            384
+          ],
+          "numel": 384,
+          "trainable": true
+        },
+        {
+          "name": "blocks.3.attn.c_proj.weight",
+          "shape": [
+            128,
+            128
+          ],
+          "numel": 16384,
+          "trainable": true
+        },
+        {
+          "name": "blocks.3.attn.c_proj.bias",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        },
+        {
+          "name": "blocks.3.ln_2.weight",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        },
+        {
+          "name": "blocks.3.ln_2.bias",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        },
+        {
+          "name": "blocks.3.mlp.c_fc.weight",
+          "shape": [
+            512,
+            128
+          ],
+          "numel": 65536,
+          "trainable": true
+        },
+        {
+          "name": "blocks.3.mlp.c_fc.bias",
+          "shape": [
+            512
+          ],
+          "numel": 512,
+          "trainable": true
+        },
+        {
+          "name": "blocks.3.mlp.c_proj.weight",
+          "shape": [
+            128,
+            512
+          ],
+          "numel": 65536,
+          "trainable": true
+        },
+        {
+          "name": "blocks.3.mlp.c_proj.bias",
+          "shape": [
+            128
+          ],
+          "numel": 128,
+          "trainable": true
+        }
+      ]
+    }
+  },
+  "activations_per_block": {
+    "0": {
+      "attn.input": [
+        8,
+        64,
+        128
+      ],
+      "attn.qkv_fused": [
+        8,
+        64,
+        384
+      ],
+      "attn.q_heads": [
+        8,
+        4,
+        64,
+        32
+      ],
+      "attn.k_heads": [
+        8,
+        4,
+        64,
+        32
+      ],
+      "attn.v_heads": [
+        8,
+        4,
+        64,
+        32
+      ],
+      "attn.scores": [
+        8,
+        4,
+        64,
+        64
+      ],
+      "attn.per_head_output": [
+        8,
+        4,
+        64,
+        32
+      ],
+      "attn.heads_merged": [
+        8,
+        64,
+        128
+      ],
+      "attn.output": [
+        8,
+        64,
+        128
+      ],
+      "mlp.input": [
+        8,
+        64,
+        128
+      ],
+      "mlp.hidden": [
+        8,
+        64,
+        512
+      ],
+      "mlp.activated": [
+        8,
+        64,
+        512
+      ],
+      "mlp.output": [
+        8,
+        64,
+        128
+      ]
+    },
+    "1": {
+      "attn.input": [
+        8,
+        64,
+        128
+      ],
+      "attn.qkv_fused": [
+        8,
+        64,
+        384
+      ],
+      "attn.q_heads": [
+        8,
+        4,
+        64,
+        32
+      ],
+      "attn.k_heads": [
+        8,
+        4,
+        64,
+        32
+      ],
+      "attn.v_heads": [
+        8,
+        4,
+        64,
+        32
+      ],
+      "attn.scores": [
+        8,
+        4,
+        64,
+        64
+      ],
+      "attn.per_head_output": [
+        8,
+        4,
+        64,
+        32
+      ],
+      "attn.heads_merged": [
+        8,
+        64,
+        128
+      ],
+      "attn.output": [
+        8,
+        64,
+        128
+      ],
+      "mlp.input": [
+        8,
+        64,
+        128
+      ],
+      "mlp.hidden": [
+        8,
+        64,
+        512
+      ],
+      "mlp.activated": [
+        8,
+        64,
+        512
+      ],
+      "mlp.output": [
+        8,
+        64,
+        128
+      ]
+    },
+    "2": {
+      "attn.input": [
+        8,
+        64,
+        128
+      ],
+      "attn.qkv_fused": [
+        8,
+        64,
+        384
+      ],
+      "attn.q_heads": [
+        8,
+        4,
+        64,
+        32
+      ],
+      "attn.k_heads": [
+        8,
+        4,
+        64,
+        32
+      ],
+      "attn.v_heads": [
+        8,
+        4,
+        64,
+        32
+      ],
+      "attn.scores": [
+        8,
+        4,
+        64,
+        64
+      ],
+      "attn.per_head_output": [
+        8,
+        4,
+        64,
+        32
+      ],
+      "attn.heads_merged": [
+        8,
+        64,
+        128
+      ],
+      "attn.output": [
+        8,
+        64,
+        128
+      ],
+      "mlp.input": [
+        8,
+        64,
+        128
+      ],
+      "mlp.hidden": [
+        8,
+        64,
+        512
+      ],
+      "mlp.activated": [
+        8,
+        64,
+        512
+      ],
+      "mlp.output": [
+        8,
+        64,
+        128
+      ]
+    },
+    "3": {
+      "attn.input": [
+        8,
+        64,
+        128
+      ],
+      "attn.qkv_fused": [
+        8,
+        64,
+        384
+      ],
+      "attn.q_heads": [
+        8,
+        4,
+        64,
+        32
+      ],
+      "attn.k_heads": [
+        8,
+        4,
+        64,
+        32
+      ],
+      "attn.v_heads": [
+        8,
+        4,
+        64,
+        32
+      ],
+      "attn.scores": [
+        8,
+        4,
+        64,
+        64
+      ],
+      "attn.per_head_output": [
+        8,
+        4,
+        64,
+        32
+      ],
+      "attn.heads_merged": [
+        8,
+        64,
+        128
+      ],
+      "attn.output": [
+        8,
+        64,
+        128
+      ],
+      "mlp.input": [
+        8,
+        64,
+        128
+      ],
+      "mlp.hidden": [
+        8,
+        64,
+        512
+      ],
+      "mlp.activated": [
+        8,
+        64,
+        512
+      ],
+      "mlp.output": [
+        8,
+        64,
+        128
+      ]
+    }
+  },
+  "parameters": [
+    {
+      "name": "wte.weight",
+      "shape": [
+        65,
+        128
+      ],
+      "numel": 8320,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "65: V = vocab_size - one slot per token id",
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "wpe.weight",
+      "shape": [
+        64,
+        128
+      ],
+      "numel": 8192,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "64: block_size - the largest position the model was built for",
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.0.ln_1.weight",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.0.ln_1.bias",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.0.attn.c_attn.weight",
+      "shape": [
+        384,
+        128
+      ],
+      "numel": 49152,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "384: 3*n_embd - q, k and v projections fused into a single matmul",
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.0.attn.c_attn.bias",
+      "shape": [
+        384
+      ],
+      "numel": 384,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "384: 3*n_embd - q, k and v projections fused into a single matmul"
+      ]
+    },
+    {
+      "name": "blocks.0.attn.c_proj.weight",
+      "shape": [
+        128,
+        128
+      ],
+      "numel": 16384,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels",
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.0.attn.c_proj.bias",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.0.ln_2.weight",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.0.ln_2.bias",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.0.mlp.c_fc.weight",
+      "shape": [
+        512,
+        128
+      ],
+      "numel": 65536,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "512: 4*n_embd - MLP expansion width",
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.0.mlp.c_fc.bias",
+      "shape": [
+        512
+      ],
+      "numel": 512,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "512: 4*n_embd - MLP expansion width"
+      ]
+    },
+    {
+      "name": "blocks.0.mlp.c_proj.weight",
+      "shape": [
+        128,
+        512
+      ],
+      "numel": 65536,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels",
+        "512: 4*n_embd - MLP expansion width"
+      ]
+    },
+    {
+      "name": "blocks.0.mlp.c_proj.bias",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.1.ln_1.weight",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.1.ln_1.bias",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.1.attn.c_attn.weight",
+      "shape": [
+        384,
+        128
+      ],
+      "numel": 49152,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "384: 3*n_embd - q, k and v projections fused into a single matmul",
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.1.attn.c_attn.bias",
+      "shape": [
+        384
+      ],
+      "numel": 384,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "384: 3*n_embd - q, k and v projections fused into a single matmul"
+      ]
+    },
+    {
+      "name": "blocks.1.attn.c_proj.weight",
+      "shape": [
+        128,
+        128
+      ],
+      "numel": 16384,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels",
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.1.attn.c_proj.bias",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.1.ln_2.weight",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.1.ln_2.bias",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.1.mlp.c_fc.weight",
+      "shape": [
+        512,
+        128
+      ],
+      "numel": 65536,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "512: 4*n_embd - MLP expansion width",
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.1.mlp.c_fc.bias",
+      "shape": [
+        512
+      ],
+      "numel": 512,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "512: 4*n_embd - MLP expansion width"
+      ]
+    },
+    {
+      "name": "blocks.1.mlp.c_proj.weight",
+      "shape": [
+        128,
+        512
+      ],
+      "numel": 65536,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels",
+        "512: 4*n_embd - MLP expansion width"
+      ]
+    },
+    {
+      "name": "blocks.1.mlp.c_proj.bias",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.2.ln_1.weight",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.2.ln_1.bias",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.2.attn.c_attn.weight",
+      "shape": [
+        384,
+        128
+      ],
+      "numel": 49152,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "384: 3*n_embd - q, k and v projections fused into a single matmul",
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.2.attn.c_attn.bias",
+      "shape": [
+        384
+      ],
+      "numel": 384,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "384: 3*n_embd - q, k and v projections fused into a single matmul"
+      ]
+    },
+    {
+      "name": "blocks.2.attn.c_proj.weight",
+      "shape": [
+        128,
+        128
+      ],
+      "numel": 16384,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels",
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.2.attn.c_proj.bias",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.2.ln_2.weight",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.2.ln_2.bias",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.2.mlp.c_fc.weight",
+      "shape": [
+        512,
+        128
+      ],
+      "numel": 65536,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "512: 4*n_embd - MLP expansion width",
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.2.mlp.c_fc.bias",
+      "shape": [
+        512
+      ],
+      "numel": 512,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "512: 4*n_embd - MLP expansion width"
+      ]
+    },
+    {
+      "name": "blocks.2.mlp.c_proj.weight",
+      "shape": [
+        128,
+        512
+      ],
+      "numel": 65536,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels",
+        "512: 4*n_embd - MLP expansion width"
+      ]
+    },
+    {
+      "name": "blocks.2.mlp.c_proj.bias",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.3.ln_1.weight",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.3.ln_1.bias",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.3.attn.c_attn.weight",
+      "shape": [
+        384,
+        128
+      ],
+      "numel": 49152,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "384: 3*n_embd - q, k and v projections fused into a single matmul",
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.3.attn.c_attn.bias",
+      "shape": [
+        384
+      ],
+      "numel": 384,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "384: 3*n_embd - q, k and v projections fused into a single matmul"
+      ]
+    },
+    {
+      "name": "blocks.3.attn.c_proj.weight",
+      "shape": [
+        128,
+        128
+      ],
+      "numel": 16384,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels",
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.3.attn.c_proj.bias",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.3.ln_2.weight",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.3.ln_2.bias",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.3.mlp.c_fc.weight",
+      "shape": [
+        512,
+        128
+      ],
+      "numel": 65536,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "512: 4*n_embd - MLP expansion width",
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "blocks.3.mlp.c_fc.bias",
+      "shape": [
+        512
+      ],
+      "numel": 512,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "512: 4*n_embd - MLP expansion width"
+      ]
+    },
+    {
+      "name": "blocks.3.mlp.c_proj.weight",
+      "shape": [
+        128,
+        512
+      ],
+      "numel": 65536,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels",
+        "512: 4*n_embd - MLP expansion width"
+      ]
+    },
+    {
+      "name": "blocks.3.mlp.c_proj.bias",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "ln_f.weight",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "ln_f.bias",
+      "shape": [
+        128
+      ],
+      "numel": 128,
+      "dtype": "torch.float32",
+      "requires_grad": true,
+      "axes": [
+        "128: C = n_embd - residual-stream channels"
+      ]
+    }
+  ],
+  "activations": [
+    {
+      "name": "input_ids",
+      "shape": [
+        8,
+        64
+      ],
+      "axes": [
+        "8: B - independent sequences in this micro-batch",
+        "64: T - sequence positions (context length used by this batch)"
+      ]
+    },
+    {
+      "name": "positions",
+      "shape": [
+        64
+      ],
+      "axes": [
+        "64: T - sequence positions (context length used by this batch)"
+      ]
+    },
+    {
+      "name": "token_embeddings",
+      "shape": [
+        8,
+        64,
+        128
+      ],
+      "axes": [
+        "8: B - independent sequences in this micro-batch",
+        "64: T - sequence positions (context length used by this batch)",
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "position_embeddings",
+      "shape": [
+        64,
+        128
+      ],
+      "axes": [
+        "64: T - sequence positions (context length used by this batch)",
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "residual_stream",
+      "shape": [
+        8,
+        64,
+        128
+      ],
+      "axes": [
+        "8: B - independent sequences in this micro-batch",
+        "64: T - sequence positions (context length used by this batch)",
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "logits",
+      "shape": [
+        8,
+        64,
+        65
+      ],
+      "axes": [
+        "8: B - independent sequences in this micro-batch",
+        "64: T - sequence positions (context length used by this batch)",
+        "65: V = vocab_size - one slot per token id"
+      ]
+    },
+    {
+      "name": "logits_flat",
+      "shape": [
+        512,
+        65
+      ],
+      "axes": [
+        "512: B*T - rows flattened so cross_entropy sees one prediction per row",
+        "65: V = vocab_size - one slot per token id"
+      ]
+    },
+    {
+      "name": "targets_flat",
+      "shape": [
+        512
+      ],
+      "axes": [
+        "512: B*T - rows flattened so cross_entropy sees one prediction per row"
+      ]
+    },
+    {
+      "name": "loss",
+      "shape": [],
+      "axes": [
+        "scalar: the loss is 0-dimensional, one number for the whole batch"
+      ]
+    },
+    {
+      "name": "attn.input",
+      "shape": [
+        8,
+        64,
+        128
+      ],
+      "axes": [
+        "8: B - independent sequences in this micro-batch",
+        "64: T - sequence positions (context length used by this batch)",
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "attn.qkv_fused",
+      "shape": [
+        8,
+        64,
+        384
+      ],
+      "axes": [
+        "8: B - independent sequences in this micro-batch",
+        "64: T - sequence positions (context length used by this batch)",
+        "384: 3*n_embd - q, k and v projections fused into a single matmul"
+      ]
+    },
+    {
+      "name": "attn.q_heads",
+      "shape": [
+        8,
+        4,
+        64,
+        32
+      ],
+      "axes": [
+        "8: B - independent sequences in this micro-batch",
+        "4: H = n_head - attention heads, computed in parallel with no interaction",
+        "64: T - sequence positions (context length used by this batch)",
+        "32: head_dim = n_embd/n_head - channels owned by a single head"
+      ]
+    },
+    {
+      "name": "attn.k_heads",
+      "shape": [
+        8,
+        4,
+        64,
+        32
+      ],
+      "axes": [
+        "8: B - independent sequences in this micro-batch",
+        "4: H = n_head - attention heads, computed in parallel with no interaction",
+        "64: T - sequence positions (context length used by this batch)",
+        "32: head_dim = n_embd/n_head - channels owned by a single head"
+      ]
+    },
+    {
+      "name": "attn.v_heads",
+      "shape": [
+        8,
+        4,
+        64,
+        32
+      ],
+      "axes": [
+        "8: B - independent sequences in this micro-batch",
+        "4: H = n_head - attention heads, computed in parallel with no interaction",
+        "64: T - sequence positions (context length used by this batch)",
+        "32: head_dim = n_embd/n_head - channels owned by a single head"
+      ]
+    },
+    {
+      "name": "attn.scores",
+      "shape": [
+        8,
+        4,
+        64,
+        64
+      ],
+      "axes": [
+        "8: B - independent sequences in this micro-batch",
+        "4: H = n_head - attention heads, computed in parallel with no interaction",
+        "64: T - sequence positions (context length used by this batch)",
+        "64: T (key positions) - what each query position is allowed to attend to"
+      ]
+    },
+    {
+      "name": "attn.per_head_output",
+      "shape": [
+        8,
+        4,
+        64,
+        32
+      ],
+      "axes": [
+        "8: B - independent sequences in this micro-batch",
+        "4: H = n_head - attention heads, computed in parallel with no interaction",
+        "64: T - sequence positions (context length used by this batch)",
+        "32: head_dim = n_embd/n_head - channels owned by a single head"
+      ]
+    },
+    {
+      "name": "attn.heads_merged",
+      "shape": [
+        8,
+        64,
+        128
+      ],
+      "axes": [
+        "8: B - independent sequences in this micro-batch",
+        "64: T - sequence positions (context length used by this batch)",
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "attn.output",
+      "shape": [
+        8,
+        64,
+        128
+      ],
+      "axes": [
+        "8: B - independent sequences in this micro-batch",
+        "64: T - sequence positions (context length used by this batch)",
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "mlp.input",
+      "shape": [
+        8,
+        64,
+        128
+      ],
+      "axes": [
+        "8: B - independent sequences in this micro-batch",
+        "64: T - sequence positions (context length used by this batch)",
+        "128: C = n_embd - residual-stream channels"
+      ]
+    },
+    {
+      "name": "mlp.hidden",
+      "shape": [
+        8,
+        64,
+        512
+      ],
+      "axes": [
+        "8: B - independent sequences in this micro-batch",
+        "64: T - sequence positions (context length used by this batch)",
+        "512: 4*n_embd - MLP expansion width"
+      ]
+    },
+    {
+      "name": "mlp.activated",
+      "shape": [
+        8,
+        64,
+        512
+      ],
+      "axes": [
+        "8: B - independent sequences in this micro-batch",
+        "64: T - sequence positions (context length used by this batch)",
+        "512: 4*n_embd - MLP expansion width"
+      ]
+    },
+    {
+      "name": "mlp.output",
+      "shape": [
+        8,
+        64,
+        128
+      ],
+      "axes": [
+        "8: B - independent sequences in this micro-batch",
+        "64: T - sequence positions (context length used by this batch)",
+        "128: C = n_embd - residual-stream channels"
+      ]
+    }
+  ],
+  "gradients": [
+    {
+      "name": "wte.weight",
+      "grad_shape": [
+        65,
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "wpe.weight",
+      "grad_shape": [
+        64,
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.0.ln_1.weight",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.0.ln_1.bias",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.0.attn.c_attn.weight",
+      "grad_shape": [
+        384,
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.0.attn.c_attn.bias",
+      "grad_shape": [
+        384
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.0.attn.c_proj.weight",
+      "grad_shape": [
+        128,
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.0.attn.c_proj.bias",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.0.ln_2.weight",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.0.ln_2.bias",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.0.mlp.c_fc.weight",
+      "grad_shape": [
+        512,
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.0.mlp.c_fc.bias",
+      "grad_shape": [
+        512
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.0.mlp.c_proj.weight",
+      "grad_shape": [
+        128,
+        512
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.0.mlp.c_proj.bias",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.1.ln_1.weight",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.1.ln_1.bias",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.1.attn.c_attn.weight",
+      "grad_shape": [
+        384,
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.1.attn.c_attn.bias",
+      "grad_shape": [
+        384
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.1.attn.c_proj.weight",
+      "grad_shape": [
+        128,
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.1.attn.c_proj.bias",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.1.ln_2.weight",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.1.ln_2.bias",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.1.mlp.c_fc.weight",
+      "grad_shape": [
+        512,
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.1.mlp.c_fc.bias",
+      "grad_shape": [
+        512
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.1.mlp.c_proj.weight",
+      "grad_shape": [
+        128,
+        512
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.1.mlp.c_proj.bias",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.2.ln_1.weight",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.2.ln_1.bias",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.2.attn.c_attn.weight",
+      "grad_shape": [
+        384,
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.2.attn.c_attn.bias",
+      "grad_shape": [
+        384
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.2.attn.c_proj.weight",
+      "grad_shape": [
+        128,
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.2.attn.c_proj.bias",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.2.ln_2.weight",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.2.ln_2.bias",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.2.mlp.c_fc.weight",
+      "grad_shape": [
+        512,
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.2.mlp.c_fc.bias",
+      "grad_shape": [
+        512
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.2.mlp.c_proj.weight",
+      "grad_shape": [
+        128,
+        512
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.2.mlp.c_proj.bias",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.3.ln_1.weight",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.3.ln_1.bias",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.3.attn.c_attn.weight",
+      "grad_shape": [
+        384,
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.3.attn.c_attn.bias",
+      "grad_shape": [
+        384
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.3.attn.c_proj.weight",
+      "grad_shape": [
+        128,
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.3.attn.c_proj.bias",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.3.ln_2.weight",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.3.ln_2.bias",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.3.mlp.c_fc.weight",
+      "grad_shape": [
+        512,
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.3.mlp.c_fc.bias",
+      "grad_shape": [
+        512
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.3.mlp.c_proj.weight",
+      "grad_shape": [
+        128,
+        512
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "blocks.3.mlp.c_proj.bias",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "ln_f.weight",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    },
+    {
+      "name": "ln_f.bias",
+      "grad_shape": [
+        128
+      ],
+      "matches_param_shape": true
+    }
+  ],
+  "optimizer_state": [
+    {
+      "name": "wte.weight",
+      "exp_avg_shape": [
+        65,
+        128
+      ],
+      "exp_avg_sq_shape": [
+        65,
+        128
+      ]
+    },
+    {
+      "name": "wpe.weight",
+      "exp_avg_shape": [
+        64,
+        128
+      ],
+      "exp_avg_sq_shape": [
+        64,
+        128
+      ]
+    },
+    {
+      "name": "blocks.0.ln_1.weight",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.0.ln_1.bias",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.0.attn.c_attn.weight",
+      "exp_avg_shape": [
+        384,
+        128
+      ],
+      "exp_avg_sq_shape": [
+        384,
+        128
+      ]
+    },
+    {
+      "name": "blocks.0.attn.c_attn.bias",
+      "exp_avg_shape": [
+        384
+      ],
+      "exp_avg_sq_shape": [
+        384
+      ]
+    },
+    {
+      "name": "blocks.0.attn.c_proj.weight",
+      "exp_avg_shape": [
+        128,
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128,
+        128
+      ]
+    },
+    {
+      "name": "blocks.0.attn.c_proj.bias",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.0.ln_2.weight",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.0.ln_2.bias",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.0.mlp.c_fc.weight",
+      "exp_avg_shape": [
+        512,
+        128
+      ],
+      "exp_avg_sq_shape": [
+        512,
+        128
+      ]
+    },
+    {
+      "name": "blocks.0.mlp.c_fc.bias",
+      "exp_avg_shape": [
+        512
+      ],
+      "exp_avg_sq_shape": [
+        512
+      ]
+    },
+    {
+      "name": "blocks.0.mlp.c_proj.weight",
+      "exp_avg_shape": [
+        128,
+        512
+      ],
+      "exp_avg_sq_shape": [
+        128,
+        512
+      ]
+    },
+    {
+      "name": "blocks.0.mlp.c_proj.bias",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.1.ln_1.weight",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.1.ln_1.bias",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.1.attn.c_attn.weight",
+      "exp_avg_shape": [
+        384,
+        128
+      ],
+      "exp_avg_sq_shape": [
+        384,
+        128
+      ]
+    },
+    {
+      "name": "blocks.1.attn.c_attn.bias",
+      "exp_avg_shape": [
+        384
+      ],
+      "exp_avg_sq_shape": [
+        384
+      ]
+    },
+    {
+      "name": "blocks.1.attn.c_proj.weight",
+      "exp_avg_shape": [
+        128,
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128,
+        128
+      ]
+    },
+    {
+      "name": "blocks.1.attn.c_proj.bias",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.1.ln_2.weight",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.1.ln_2.bias",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.1.mlp.c_fc.weight",
+      "exp_avg_shape": [
+        512,
+        128
+      ],
+      "exp_avg_sq_shape": [
+        512,
+        128
+      ]
+    },
+    {
+      "name": "blocks.1.mlp.c_fc.bias",
+      "exp_avg_shape": [
+        512
+      ],
+      "exp_avg_sq_shape": [
+        512
+      ]
+    },
+    {
+      "name": "blocks.1.mlp.c_proj.weight",
+      "exp_avg_shape": [
+        128,
+        512
+      ],
+      "exp_avg_sq_shape": [
+        128,
+        512
+      ]
+    },
+    {
+      "name": "blocks.1.mlp.c_proj.bias",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.2.ln_1.weight",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.2.ln_1.bias",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.2.attn.c_attn.weight",
+      "exp_avg_shape": [
+        384,
+        128
+      ],
+      "exp_avg_sq_shape": [
+        384,
+        128
+      ]
+    },
+    {
+      "name": "blocks.2.attn.c_attn.bias",
+      "exp_avg_shape": [
+        384
+      ],
+      "exp_avg_sq_shape": [
+        384
+      ]
+    },
+    {
+      "name": "blocks.2.attn.c_proj.weight",
+      "exp_avg_shape": [
+        128,
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128,
+        128
+      ]
+    },
+    {
+      "name": "blocks.2.attn.c_proj.bias",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.2.ln_2.weight",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.2.ln_2.bias",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.2.mlp.c_fc.weight",
+      "exp_avg_shape": [
+        512,
+        128
+      ],
+      "exp_avg_sq_shape": [
+        512,
+        128
+      ]
+    },
+    {
+      "name": "blocks.2.mlp.c_fc.bias",
+      "exp_avg_shape": [
+        512
+      ],
+      "exp_avg_sq_shape": [
+        512
+      ]
+    },
+    {
+      "name": "blocks.2.mlp.c_proj.weight",
+      "exp_avg_shape": [
+        128,
+        512
+      ],
+      "exp_avg_sq_shape": [
+        128,
+        512
+      ]
+    },
+    {
+      "name": "blocks.2.mlp.c_proj.bias",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.3.ln_1.weight",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.3.ln_1.bias",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.3.attn.c_attn.weight",
+      "exp_avg_shape": [
+        384,
+        128
+      ],
+      "exp_avg_sq_shape": [
+        384,
+        128
+      ]
+    },
+    {
+      "name": "blocks.3.attn.c_attn.bias",
+      "exp_avg_shape": [
+        384
+      ],
+      "exp_avg_sq_shape": [
+        384
+      ]
+    },
+    {
+      "name": "blocks.3.attn.c_proj.weight",
+      "exp_avg_shape": [
+        128,
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128,
+        128
+      ]
+    },
+    {
+      "name": "blocks.3.attn.c_proj.bias",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.3.ln_2.weight",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.3.ln_2.bias",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "blocks.3.mlp.c_fc.weight",
+      "exp_avg_shape": [
+        512,
+        128
+      ],
+      "exp_avg_sq_shape": [
+        512,
+        128
+      ]
+    },
+    {
+      "name": "blocks.3.mlp.c_fc.bias",
+      "exp_avg_shape": [
+        512
+      ],
+      "exp_avg_sq_shape": [
+        512
+      ]
+    },
+    {
+      "name": "blocks.3.mlp.c_proj.weight",
+      "exp_avg_shape": [
+        128,
+        512
+      ],
+      "exp_avg_sq_shape": [
+        128,
+        512
+      ]
+    },
+    {
+      "name": "blocks.3.mlp.c_proj.bias",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "ln_f.weight",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    },
+    {
+      "name": "ln_f.bias",
+      "exp_avg_shape": [
+        128
+      ],
+      "exp_avg_sq_shape": [
+        128
+      ]
+    }
+  ],
+  "_env": {
+    "python": "3.12.3",
+    "torch": "2.13.0+cu130",
+    "platform": "Linux-6.18.44-fc-v22-x86_64-with-glibc2.39",
+    "processor": "x86_64",
+    "cuda_available": false,
+    "device_name": "cpu",
+    "torch_threads": 1,
+    "git_commit": null,
+    "corpus_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+    "generated_utc": "2026-09-01T13:12:20Z"
+  }
+}
